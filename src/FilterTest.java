@@ -3,7 +3,8 @@ import Filters.DisplayInfoFilter;
 import Interfaces.PixelFilter;
 import core.DImage;
 import core.DisplayWindow;
-import processing.core.PImage;
+import processing.core.PImage;//
+//daddy
 
 public class FilterTest {
     public static String currentFolder = System.getProperty("user.dir") + "/";
