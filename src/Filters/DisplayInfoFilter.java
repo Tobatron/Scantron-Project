@@ -14,6 +14,8 @@ public class DisplayInfoFilter implements PixelFilter {
     public DImage processImage(DImage img) {
         short[][] grid = img.getBWPixelGrid();
 
+        grid = crop(grid,0,0,500,500);
+
         System.out.println("Image is " + grid.length + " by "+ grid[0].length);
 
         int blackCount = 0;
@@ -25,11 +27,25 @@ public class DisplayInfoFilter implements PixelFilter {
             }
         }
 
+
         System.out.println(blackCount + " nearly black pixels and " + whiteCount + " nearly white pixels");
         System.out.println("----------------------------------------");
         System.out.println("If you want, you could output information to a file instead of printing it.");
-
+        img.setPixels(grid);
         return img;
     }
+  private short[ ][ ] crop (short[][]grid, int r1, int c1, int r2, int c2){
+      int newRows = r2 - r1 + 1;
+      int newCols = c2 - c1 + 1;
+      short[][] croppedGrid = new short[newRows][newCols];
+
+      for (int i = 0; i < newRows; i++) {
+          for (int j = 0; j < newCols; j++) {
+              croppedGrid[i][j] = grid[r1 + i][c1 + j];
+          }
+      }
+
+      return croppedGrid;
+  }
 }
 
