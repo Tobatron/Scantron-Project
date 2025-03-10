@@ -3,7 +3,7 @@ package Filters;
 import Interfaces.PixelFilter;
 import core.DImage;
 
-public class SeparateBubbles implements PixelFilter {
+public class CropImage implements PixelFilter {
 
 
     @Override
@@ -11,7 +11,7 @@ public class SeparateBubbles implements PixelFilter {
         short[][] grid = img.getBWPixelGrid();
 
 
-        grid = crop(grid,0,0,1500,500);
+        grid = crop(grid,0,0,1350,400);
         grid = downSample(grid);
 
         img.setPixels(grid);
