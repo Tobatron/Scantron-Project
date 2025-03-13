@@ -6,6 +6,9 @@ import core.DImage;
 public class CropImage implements PixelFilter {
 
 
+    public CropImage (){
+        
+    }
     @Override
     public DImage processImage(DImage img) {
         short[][] grid = img.getBWPixelGrid();

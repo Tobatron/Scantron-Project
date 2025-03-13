@@ -3,6 +3,8 @@ package Filters;
 import Interfaces.PixelFilter;
 import core.DImage;
 
+import java.util.ArrayList;
+
 public class CheckBubbles implements PixelFilter {
 
 
@@ -10,24 +12,15 @@ public class CheckBubbles implements PixelFilter {
 
     public DImage processImage(DImage img) {
         short[][] grid = img.getBWPixelGrid();
+        ArrayList<Integer> blackList = new ArrayList<>();
 
+//        for (int r = 53; r <= ; r += 12) {
+//            for (int c = ; c < ; c++) {
+//
+//            }
+//
+//        }
 
-        int count = 5;
-
-        for (int i = 55; i < grid.length-5; i+=10) {
-            for (int j = 60; j < grid[0].length; j+=10) {
-                for (int r = i; r < i+5; r++) {
-                    if(grid[r][j]<50){
-                        count++;
-
-
-
-
-                    }
-                }
-            }
-
-        }
 
         img.setPixels(grid);
         return img;
@@ -35,4 +28,15 @@ public class CheckBubbles implements PixelFilter {
 
 
     }
+
+    public static int getNumBlack(short[][] arr){
+        int counter = 0;
+        for (int r = 0; r < arr.length; r++) {
+            for (int c = 0; c < arr[0].length; c++) {
+                if (arr[r][c] <80) counter++;
+            }
+        }
+        return counter;
+    }
+
 }
